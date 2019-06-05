@@ -37,7 +37,7 @@ Things you may want to cover:
 ## messagesテーブル
 |Column    |Type    |Options                       |
 |----------|--------|------------------------------|
-|body      |text    |null: false                   |
+|body      |text    |                              |
 |image     |string  |                              |
 |created_at|datetime|null: false                   |
 |user_id   |integer |null: false, foreign_key: true|
@@ -55,14 +55,16 @@ Things you may want to cover:
 |password|string|null:false                     |
 
 ### Association
+has_many :members
 has_many :messages
 has_many :groups, through: :menbers
 
 ## groupsテーブル
-|Column    |Type  |Options   |
-|----------|------|----------|
-|group_name|string|null:false|
+|Column|Type  |Options   |
+|------|------|----------|
+|name  |string|null:false|
 
 ### Association
+has_many :members
 has_many :messages
 has_many :users, through: :menbers

@@ -56,7 +56,7 @@ Things you may want to cover:
 
 ### Association
 has_many :messages
-has_many :groups
+has_many :groups, through: :menbers
 
 ## groupsテーブル
 |Column    |Type  |Options   |
@@ -65,4 +65,4 @@ has_many :groups
 
 ### Association
 has_many :messages
-has_many :users
+has_many :users, through: :menbers

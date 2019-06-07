@@ -1,0 +1,7 @@
+.flash-box {
+  background-color: #38aef0;
+  font-size: 1rem;
+  text-align: center;
+  width: 100vw;
+  @include text-template(#ffffff, 100%, bold)
+}

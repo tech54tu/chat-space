@@ -1,0 +1,42 @@
+.chat-side {
+  float: left;
+  width: 300px;
+  height: 100vh;
+
+  .side-header {
+    background-color: #253141;
+    line-height: 100px;
+    height: 100px;
+    padding: 0 20px;
+
+    &__user-name {
+      float: left;
+      @include text-template(#ffffff, 16px, bold);
+    }
+    
+    .user-menu {
+      &__edit-user {
+        float: right;
+        color: #ffffff;
+      }
+      &__new-group {
+        float: right;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .groups {
+    background-color: #2f3e31;
+    height: calc(100vh - 100px);
+    padding: 0 20px;
+    &__name {
+      @include text-template(#ffffff, 15px, bold);
+      padding: 20px 0 5px 0 ;
+    }
+    &__message {
+      @include text-template(#ffffff, 11px, bold);
+      padding: 0 0 40px 0 ;
+    }
+  }
+}

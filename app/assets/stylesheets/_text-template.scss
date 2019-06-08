@@ -1,0 +1,5 @@
+@mixin text-template($color: #ffffff, $fSize: 0px, $fWeight:bold) {
+  color:       $color;
+  font-size:   $fSize;
+  font-weight: $fWeight;
+}

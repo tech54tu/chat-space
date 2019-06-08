@@ -1,0 +1,97 @@
+.chat-main {
+  float: right;
+  width: calc(100vw - 300px);
+
+  .main-header {
+    height: 100px;
+    padding: 0 40px;
+    border-bottom: #eeeeee  1px solid; 
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    .current-group {
+      margin-top: 35px;
+      &__name {
+        @include text-template(#333333, 20px, none);
+      }
+      .member-list {
+        display: flex;
+        padding: 15px 0 0 0;
+        @include text-template(#999999, 12px, none); 
+      }
+    }
+    &__edit-btn {
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      padding:0 20px;
+      color: #38aef0;
+      border: #38aef0 solid;
+      margin-top: 28px;
+      float: right;
+    }
+  }
+  .messages {
+    height: calc(100vh - 190px);
+    background-color: #fafafa;
+    padding: 46px 40px 0px 40px;
+    box-sizing: border-box;
+    .upper-info {
+      display: flex;
+      margin-bottom: 10px;
+      &__user {
+        @include text-template(#434A54, 16px, bold);
+        float: left;
+      }
+      &__data {
+        @include text-template(#999999, 12px, none);
+        margin-left: 10px;
+      }
+    }
+    &__text {
+      @include text-template(#434A54, 14px, none);
+      margin-bottom: 40px;
+    }
+  }
+
+  .form {
+    height: 90px;
+    padding: 20px 40px;
+    background-color: #ddd;
+    box-sizing: border-box;
+    .new-message {
+      display: flex;
+      position: relative;
+      .input-box {
+        width: 100%;
+        background-color: #ffffff;
+        &__text {
+          height: 50px;
+          width: calc(100% - 200px);
+          padding: 0 40px 0 10px;
+          border-style: none;
+          line-height: 50px;
+          @include text-template(#434a54, 16px, none)
+        }
+      }
+      .image-label {
+        font-size: 1.3rem;
+        position: absolute;
+        top: 10px;
+        right: 125px;
+        cursor: pointer;
+      }
+      .new-message__submit-btn {
+        height: 50px;
+        padding: 0 30px;
+        margin-left: 15px;
+        background-color: #38aef0;
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        cursor: pointer;
+      }
+    }
+  }
+}

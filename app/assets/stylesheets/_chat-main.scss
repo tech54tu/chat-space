@@ -21,7 +21,7 @@
         @include text-template(#999999, 12px, none); 
       }
     }
-    .main-header__edit-btn {
+    &__edit-btn {
       height: 40px;
       line-height: 40px;
       text-align: center;

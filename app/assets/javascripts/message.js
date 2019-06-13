@@ -31,8 +31,8 @@ $(function () {
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.comments').append(html)
-      $('.textbox').val('')
+      $('.messages').append(html)
+      $('.form_message').val('')
     })
     .fail(function(){
       alert('error');

@@ -1,61 +1,47 @@
-.flash-box
-  グループを作成しました
-
 .wrapper
-  .chat-side
-    .side-header
-      .side-header__user-name
-        サンプルユーザー
-      %ul.user-menu
-        %li.user-menu__new-group
-          =link_to "https://www.sample.com/", class: "user-menu__new-group" do
-            =fa_icon 'cog'
-        %li.user-menu__edit-user
-          =link_to "https://www.sample.com/", class: "user-menu__edit-user" do
-            =fa_icon 'pencil-square-o'
-
+  .side-bar
+    .header
+      %h3.header__name
+        = current_user.name
+      %ul.header__lists
+        %li.list
+          = link_to new_group_path do
+            = fa_icon 'pencil-square-o', class: 'icon'
+        %li.list
+          = link_to edit_user_path(current_user) do
+            = fa_icon 'cog', class: 'icon'
     .groups
-      .groups__name
-        サンプルグループ１
-      .groups__message
-        サンプルメッセージ１        
+      .group
+        - current_user.groups.each do |group|
+          = link_to group_messages_path(group) do
+            .group__name
+              = group.name
+            .group__message
+              = group.show_last_message
 
-  .chat-main
-    .main-header
-      .current-group
-        %h2.current-group__name
-          サンプルグループ４
+  .chat
+    .header
+      .left-header
+        %h2.left-header__title
+          = @group.name
           %ul.member-list
             Member：
-            %li<>
-              サンプルユーザー１
-            %li<>
-              サンプルユーザー２
-            %li<>
-              サンプルユーザー３
-      =link_to '' do
-        .main-header__edit-btn        
+            - @group.users.each do |user|
+              .user
+                %li= user.name
+
+      =link_to edit_group_path(@group) do
+        .right-header     
           Edit
 
     .messages
-      .upper-info
-        %p.upper-info__user
-          サンプルユーザー１
-        %p.upper-info__data
-          2018/06/07(Fri) 15:01:30
-      %p.messages__text    
-        サンプルメッセージ１
-      .upper-info
-        %p.upper-info__user
-          サンプルユーザー２
-        %p.upper-info__data
-          2018/06/07(Fri) 15:02:30
-      %p.messages__text    
-        サンプルメッセージ２
+      = render @messages
+
     .form
-      .new-message
-        .input-box
-          %input{:type => "text", :placeholder => "type a message", class: "input-box__text"}
-        .image-label
-          =fa_icon 'picture-o'
-        .new-message__submit-btn Send
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'

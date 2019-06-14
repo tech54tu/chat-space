@@ -1,20 +1,23 @@
 $(function () {
   function buildHTML(message){
-    var html =  <div class="message">
+    var html =  `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
-                      ${message.user.name}
+                      ${message.user_name}
                     </div>
                     <div class="upper-message__date">
-                      ${message.created_at.strftime("%Y/%m/%d %H:%M")}
+                      ${message.created_at}
                     </div>
                   </div>
                   <div class="lower-message">
                     <p class="lower-message__content">
-                      ${= message.content}
+                      ${message.content}
                     </p>
                   </div>
-                </div>
+                  <div class="lower-message">
+                    <img class="lower-message__image" src="${message.image}" alt="image">
+                  </div>
+                </div>`
     return html;
   }
   $('#new_message').on('submit', function(e){
@@ -33,9 +36,13 @@ $(function () {
       var html = buildHTML(data);
       $('.messages').append(html)
       $('.form_message').val('')
+      console.log(this)
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      $('.form__submit').prop('disabled', false);
     })
     .fail(function(){
       alert('error');
+      $('.form__submit').prop('disabled', false);
     })
   })
 })

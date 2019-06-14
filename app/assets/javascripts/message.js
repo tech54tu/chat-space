@@ -15,7 +15,7 @@ $(function () {
                     </p>
                   </div>
                   <div class="lower-message">
-                    <img class="lower-message__image" src="${message.image}" alt="image">
+                    <img class="lower-message__image" src="${message.image}" alt="">
                   </div>
                 </div>`
     return html;
@@ -35,8 +35,7 @@ $(function () {
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html)
-      $('.form_message').val('')
-      console.log(this)
+      $('#new_message')[0].reset()
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
       $('.form__submit').prop('disabled', false);
     })

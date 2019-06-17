@@ -59,7 +59,7 @@ $(document).on('turbolinks:load', function(){
           appendGroupUser(userId, userName);
     });
     $("#chat-group-users").on("click", ".chat-group-user__btn--remove", function(){
-      
+      $(this).parent().remove();
     });
   });
 });

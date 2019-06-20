@@ -11,7 +11,7 @@
 
     &__user-name {
       float: left;
-      @include text-template(#ffffff, 16px, bold);
+      font-size: $header_font;
     }
     
     .user-menu {
@@ -30,13 +30,18 @@
     background-color: #2f3e31;
     height: calc(100vh - 100px);
     padding: 0 20px;
-    &__name {
-      @include text-template(#ffffff, 15px, bold);
-      padding: 20px 0 5px 0 ;
-    }
-    &__message {
-      @include text-template(#ffffff, 11px, bold);
-      padding: 0 0 40px 0 ;
+    .group {
+      box-sizing: border-box;
+      padding: 20px 0 40px 0 ;
+      &__name {
+        color: $white;
+        font-size: $side_group_name;
+      }
+      &__message {
+        color: $white;
+        font-size: $side_group_message;
+        margin-top: 5px ;
+      }
     }
   }
 }

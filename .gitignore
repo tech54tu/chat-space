@@ -18,3 +18,5 @@
 
 public/uploads/*
 bin/
+
+config/secrets.yml

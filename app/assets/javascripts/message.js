@@ -46,10 +46,17 @@ $(function () {
     })
   })
 
-  var reloadMessages = function() {
+  // var reloadMessages = function() {
+  function reloadMessages () {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
-      var last_message_id = $('.message:last').data('message-id');
-      var group_id        = $('.messages').data('group-id');
+      if($('.message')[0]){
+        var last_message_id = $('.message:last').data('message-id');
+        var group_id        = $('.messages').data('group-id');
+      } else {
+        var last_message_id = 0
+        var group_id        = $('.messages').data('group-id');
+      }
+      
       $.ajax({
         url: `/groups/${group_id}/api/messages`,
         type: 'get',
@@ -65,10 +72,9 @@ $(function () {
         })
       })
       .fail(function() {
-        alert('error');
+        alert.log('error');
       });
     }
-  
   };
   setInterval(reloadMessages, 5000);
 });
